@@ -713,17 +713,26 @@ bool BootAnimation::nidec() {
 
 
 
+    //-------- Modify the time frames (StartTime Frame & EndTime Frame) - SACHIN.R.DSILVA 2025-02-04------
+    static const nsecs_t FRAME_DURATION_NS = 50000LL * 1000; // 50ms for 20fps
+    nsecs_t lastFrameTime = systemTime();
+    //-------- Modify the time frames (StartTime Frame & EndTime Frame) - SACHIN.R.DSILVA 2025-02-04------
+
 
     // ryk test ==>
     //const nsecs_t startTime = systemTime();
     // ryk test <==
     do {
+
+        //--------- Modified -- SACHIN.R.DSILVA 2025-01-04------------------
+        nsecs_t frameStart = systemTime();
+
         processDisplayEvents();
         const Rect updateRect(0, 0, mAndroid[0].w, mAndroid[0].h);
         glScissor(updateRect.left, updateRect.top, updateRect.width(),
                 updateRect.height());
 
-        nsecs_t now = systemTime();
+        // nsecs_t now = systemTime();
         // ryk test ==>
         //double time = now - startTime;
         //float t = 4.0f * float(time / us2ns(16667)) / mAndroid[1].h;
@@ -758,7 +767,7 @@ bool BootAnimation::nidec() {
 
             spinnerX = (mWidth - spinnerWidth) / 2 - 290;
             // spinnerY = mHeight - spinnerHeight - 100;
-            spinnerY = (mHeight / 2);
+            spinnerY = (mHeight / 2) - 130; // Modified SACHIN.R.DSILVA 2025-02-04
             spinnerInitialized = true;
         }
 
@@ -779,11 +788,36 @@ bool BootAnimation::nidec() {
         if (res == EGL_FALSE)
             break;
 
+
+        //=============== - SACHIN.R.DSILVA 2025-02-04 - ===========================       
+        // ==========-- Stable Frame Rates for Android Boot up --==========
+
+        nsecs_t now = systemTime();
+        nsecs_t frameElapsed = now - frameStart; // This will be nano seconds
+
+        // For ~50ms per frame-image
+
+        nsecs_t sleepNs = FRAME_DURATION_NS - frameElapsed;
+        if(sleepNs > 0){
+            usleep(ns2us(sleepNs)); // To convert nano seconds to micro seconds
+        }
+        // ==========-- Stable Frame Rates for Android Boot up --==========
+        //=============== - SACHIN.R.DSILVA 2025-02-04 - ===========================       
+
+
+         //=============== COMMENTED - SACHIN.R.DSILVA ===========================       
+         //=============== COMMENTED - SACHIN.R.DSILVA ===========================       
+         //=============== COMMENTED - SACHIN.R.DSILVA ===========================       
+
         // 12fps: don't animate too fast to preserve CPU
         // const nsecs_t sleepTime = 83333 - ns2us(systemTime() - now); - SACHIN.R.DSILVA 2025-02-04
-        const nsecs_t sleepTime = 50000 - ns2us(systemTime() - now); // ~50ms - SACHIN.R.DSILVA 2025-02-04
-        if (sleepTime > 0)
-            usleep(sleepTime);
+        // const nsecs_t sleepTime = 50000 - ns2us(systemTime() - now); // ~50ms - SACHIN.R.DSILVA 2025-02-04
+        // if (sleepTime > 0)
+        //     usleep(sleepTime);
+         //=============== COMMENTED - SACHIN.R.DSILVA ===========================       
+         //=============== COMMENTED - SACHIN.R.DSILVA ===========================       
+         //=============== COMMENTED - SACHIN.R.DSILVA ===========================       
+
 
         checkExit();
     } while (!exitPending());
