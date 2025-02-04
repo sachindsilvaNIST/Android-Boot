@@ -715,7 +715,6 @@ bool BootAnimation::nidec() {
 
     //-------- Modify the time frames (StartTime Frame & EndTime Frame) - SACHIN.R.DSILVA 2025-02-04------
     static const nsecs_t FRAME_DURATION_NS = 50000LL * 1000; // 50ms for 20fps
-    nsecs_t lastFrameTime = systemTime();
     //-------- Modify the time frames (StartTime Frame & EndTime Frame) - SACHIN.R.DSILVA 2025-02-04------
 
 
