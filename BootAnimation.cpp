@@ -85,7 +85,7 @@ static const char SYSTEM_SHUTDOWNANIMATION_FILE[] = "/system/media/shutdownanima
 
 // Spinner Frames count -- SACHIN.R.DSILVA 2025-01-30
 
-//static const int SPINNER_FRAME_COUNT = 30;
+//static const int SPINNER_FRAME_COUNT = 60;
 
 static constexpr const char* PRODUCT_USERSPACE_REBOOT_ANIMATION_FILE = "/product/media/userspace-reboot.zip";
 static constexpr const char* OEM_USERSPACE_REBOOT_ANIMATION_FILE = "/oem/media/userspace-reboot.zip";
@@ -662,10 +662,10 @@ bool BootAnimation::nidec() {
     initTexture(&mAndroid[0], mAssets, "images/nidec-logo_landscape2.png");
     
     // --------------------- LOADING SPINNER BELOW "NIDEC ALL FOR DREAMS" logo - SACHIN.R.DSILVA 2025-01-30 --------------------
-    Texture spinnerFrames[30];
+    Texture spinnerFrames[60];
     memset(spinnerFrames,0,sizeof(spinnerFrames));
 
-    for(int i = 1;i <= 30; i++){
+    for(int i = 1;i <= 60; i++){
         char filePath[128];
         sprintf(filePath,"images/spinner_%d.png",i);
 
@@ -756,7 +756,7 @@ bool BootAnimation::nidec() {
             spinnerWidth = spinnerFrames[1].w;
             spinnerHeight = spinnerFrames[1].h;
 
-            spinnerX = (mWidth - spinnerWidth) / 2 - 150;
+            spinnerX = (mWidth - spinnerWidth) / 2 - 250;
             // spinnerY = mHeight - spinnerHeight - 100;
             spinnerY = (mHeight / 2);
             spinnerInitialized = true;
@@ -771,7 +771,7 @@ bool BootAnimation::nidec() {
 
         // Move to the next spinner frame
 
-        currentFrame = (currentFrame + 1) % 30;
+        currentFrame = (currentFrame + 1) % 60;
         //-------END :: Drawing the load spinner below NIDEC logo -- SACHIN.R.DSILVA 2025-01-30------------
 
 
@@ -795,7 +795,7 @@ bool BootAnimation::nidec() {
     // --------------- SACHIN.R.DSILVA 2025-01-30 -------------------------------
 
     // Delete the spinner textures
-    for(int i = 0;i < 30; i++) {
+    for(int i = 0;i < 60; i++) {
         glDeleteTextures(1, &spinnerFrames[i].name);
     }
 
