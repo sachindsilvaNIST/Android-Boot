@@ -780,7 +780,8 @@ bool BootAnimation::nidec() {
             break;
 
         // 12fps: don't animate too fast to preserve CPU
-        const nsecs_t sleepTime = 83333 - ns2us(systemTime() - now);
+        // const nsecs_t sleepTime = 83333 - ns2us(systemTime() - now); - SACHIN.R.DSILVA 2025-02-04
+        const nsecs_t sleepTime = 50000 - ns2us(systemTime() - now); // ~50ms - SACHIN.R.DSILVA 2025-02-04
         if (sleepTime > 0)
             usleep(sleepTime);
 
