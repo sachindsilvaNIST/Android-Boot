@@ -85,7 +85,7 @@ static const char SYSTEM_SHUTDOWNANIMATION_FILE[] = "/system/media/shutdownanima
 
 // Spinner Frames count -- SACHIN.R.DSILVA 2025-01-30
 
-static const int SPINNER_FRAME_COUNT = 30;
+//static const int SPINNER_FRAME_COUNT = 30;
 
 static constexpr const char* PRODUCT_USERSPACE_REBOOT_ANIMATION_FILE = "/product/media/userspace-reboot.zip";
 static constexpr const char* OEM_USERSPACE_REBOOT_ANIMATION_FILE = "/oem/media/userspace-reboot.zip";
