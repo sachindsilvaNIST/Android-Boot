@@ -756,7 +756,7 @@ bool BootAnimation::nidec() {
             spinnerWidth = spinnerFrames[1].w;
             spinnerHeight = spinnerFrames[1].h;
 
-            spinnerX = (mWidth - spinnerWidth) / 2 - 250;
+            spinnerX = (mWidth - spinnerWidth) / 2 - 350;
             // spinnerY = mHeight - spinnerHeight - 100;
             spinnerY = (mHeight / 2);
             spinnerInitialized = true;
@@ -795,7 +795,7 @@ bool BootAnimation::nidec() {
     // --------------- SACHIN.R.DSILVA 2025-01-30 -------------------------------
 
     // Delete the spinner textures
-    for(int i = 0;i < 60; i++) {
+    for(int i = 0; i < 60; i++) {
         glDeleteTextures(1, &spinnerFrames[i].name);
     }
 
