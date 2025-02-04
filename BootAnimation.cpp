@@ -721,10 +721,9 @@ bool BootAnimation::nidec() {
     // ryk test ==>
     //const nsecs_t startTime = systemTime();
     // ryk test <==
-    do {
-
-        //--------- Modified -- SACHIN.R.DSILVA 2025-01-04------------------
+    //--------- Modified -- SACHIN.R.DSILVA 2025-01-04------------------
         nsecs_t frameStart = systemTime();
+    do {
 
         processDisplayEvents();
         const Rect updateRect(0, 0, mAndroid[0].w, mAndroid[0].h);
@@ -766,7 +765,7 @@ bool BootAnimation::nidec() {
 
             spinnerX = (mWidth - spinnerWidth) / 2 - 290;
             // spinnerY = mHeight - spinnerHeight - 100;
-            spinnerY = (mHeight / 2) - 130; // Modified SACHIN.R.DSILVA 2025-02-04
+            spinnerY = (mHeight / 2) - (spinnerHeight / 2); // Modified SACHIN.R.DSILVA 2025-02-04
             spinnerInitialized = true;
         }
 
