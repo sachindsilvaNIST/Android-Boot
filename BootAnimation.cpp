@@ -756,7 +756,7 @@ bool BootAnimation::nidec() {
             spinnerWidth = spinnerFrames[1].w;
             spinnerHeight = spinnerFrames[1].h;
 
-            spinnerX = (mWidth - spinnerWidth) / 2 - 350;
+            spinnerX = (mWidth - spinnerWidth) / 2 - 290;
             // spinnerY = mHeight - spinnerHeight - 100;
             spinnerY = (mHeight / 2);
             spinnerInitialized = true;
