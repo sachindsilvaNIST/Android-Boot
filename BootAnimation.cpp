@@ -726,7 +726,7 @@ bool BootAnimation::nidec() {
     //const nsecs_t startTime = systemTime();
     // ryk test <==
     //--------- Modified -- SACHIN.R.DSILVA 2025-01-04------------------
-        nsecs_t frameStart = systemTime();
+        nsecs_t frameStart = systemTime(); // Add - SACHIN.R.DSILVA 2025-02-05
     do {
 
         processDisplayEvents();
