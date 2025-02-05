@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+ 
+//=======================---------------------=============================
+// ========SOURCE CODE BASE --- MODIFIED SACHIN.R.DSILVA 2025-01-05========
+//=======================---------------------=============================
+
 #define LOG_NDEBUG 0
 #define LOG_TAG "BootAnimation"
 
@@ -84,7 +89,6 @@ static const char PRODUCT_SHUTDOWNANIMATION_FILE[] = "/product/media/shutdownani
 static const char SYSTEM_SHUTDOWNANIMATION_FILE[] = "/system/media/shutdownanimation.zip";
 
 // Spinner Frames count -- SACHIN.R.DSILVA 2025-01-30
-
 //static const int SPINNER_FRAME_COUNT = 60;
 
 static constexpr const char* PRODUCT_USERSPACE_REBOOT_ANIMATION_FILE = "/product/media/userspace-reboot.zip";
@@ -661,7 +665,7 @@ bool BootAnimation::nidec() {
             elapsedRealtime());
     initTexture(&mAndroid[0], mAssets, "images/nidec-logo_landscape2.png");
     
-    // --------------------- LOADING SPINNER BELOW "NIDEC ALL FOR DREAMS" logo - SACHIN.R.DSILVA 2025-01-30 --------------------
+    // =============-- LOADING SPINNER BELOW "NIDEC ALL FOR DREAMS" logo - SACHIN.R.DSILVA 2025-01-30 --================
     Texture spinnerFrames[60];
     memset(spinnerFrames,0,sizeof(spinnerFrames));
 
@@ -675,13 +679,9 @@ bool BootAnimation::nidec() {
         }
 
     }
+    // =============-- LOADING SPINNER BELOW "NIDEC ALL FOR DREAMS" logo - SACHIN.R.DSILVA 2025-01-30 --================
     
-    // --------------------- LOADING SPINNER BELOW "NIDEC ALL FOR DREAMS" logo - SACHIN.R.DSILVA 2025-01-30 --------------------
-    
-    
-    // ryk test ==>
-    //initTexture(&mAndroid[1], mAssets, "images/nidec-logo-shine_landscape.png");
-    // ryk test <==
+
 
     mCallbacks->init({});
 
@@ -703,16 +703,6 @@ bool BootAnimation::nidec() {
 
     // Drawing the loop spinner (Loading spinner) in a loop -- SACHIN.R.DSILVA 2025-01-30
 
-    // int currentFrame = 0; // The current spinning frame that we gonna draw
-
-    // int spinnerWidth = spinnerFrames[0].w;
-    // int spinnerHeight = spinnerFrames[0].h;
-    // int spinnerX = (mWidth - spinnerWidth) / 2;
-    // int spinnerY = 100; // 100px from the bottom (To be tested and debug --- SACHIN.R.DSILVA)
-
-
-
-
     //-------- Modify the time frames (StartTime Frame & EndTime Frame) - SACHIN.R.DSILVA 2025-02-04------
     static const nsecs_t FRAME_DURATION_NS = 70000LL * 1000; // 50ms for 20fps - Modified SACHIN.R.DSILVA 2025-01-04
     int currentFrame = 0; // The current spinner frame - Modified SACHIN.R.DSILVA 2025-01-04
@@ -721,10 +711,6 @@ bool BootAnimation::nidec() {
 
     //-------- Modify the time frames (StartTime Frame & EndTime Frame) - SACHIN.R.DSILVA 2025-02-04------
 
-
-    // ryk test ==>
-    //const nsecs_t startTime = systemTime();
-    // ryk test <==
     //--------- Modified -- SACHIN.R.DSILVA 2025-01-04------------------
         nsecs_t frameStart = systemTime(); // Add - SACHIN.R.DSILVA 2025-02-05
     do {
@@ -734,23 +720,6 @@ bool BootAnimation::nidec() {
         glScissor(updateRect.left, updateRect.top, updateRect.width(),
                 updateRect.height());
 
-        // nsecs_t now = systemTime();
-        // ryk test ==>
-        //double time = now - startTime;
-        //float t = 4.0f * float(time / us2ns(16667)) / mAndroid[1].h;
-        //GLint offset = (1 - (t - floorf(t))) * mAndroid[1].h;
-
-        //glDisable(GL_SCISSOR_TEST);
-        //glClear(GL_COLOR_BUFFER_BIT);
-
-        //glEnable(GL_SCISSOR_TEST);
-        //glDisable(GL_BLEND);
-        //glBindTexture(GL_TEXTURE_2D, mAndroid[1].name);
-        //glDrawTexiOES(offset,                 yc, 0, mAndroid[1].w, mAndroid[1].h);
-        //glDrawTexiOES(offset + mAndroid[1].w, yc, 0, mAndroid[1].w, mAndroid[1].h);
-
-        //glEnable(GL_BLEND);
-        // ryk test <==
         glBindTexture(GL_TEXTURE_2D, mAndroid[0].name);
         glDrawTexiOES(0, 0, 0, mWidth, mHeight);
 
@@ -775,7 +744,6 @@ bool BootAnimation::nidec() {
         glEnable(GL_BLEND); 
         glBindTexture(GL_TEXTURE_2D,spinnerFrames[currentFrame].name);
         glDrawTexiOES(spinnerX, spinnerY, 0, spinnerWidth, spinnerHeight);
-        // glDrawTexiOES(spinnerX, spinnerY, 0, spinnerFrames[currentFrame].w,spinnerFrames[currentFrame].h);
         glDisable(GL_BLEND);
 
         // Move to the next spinner frame
@@ -802,29 +770,13 @@ bool BootAnimation::nidec() {
             usleep(ns2us(sleepNs)); // To convert nano seconds to micro seconds
         }
         // ==========-- Stable Frame Rates for Android Boot up --==========
-        //=============== - SACHIN.R.DSILVA 2025-02-04 - ===========================       
-
-
-         //=============== COMMENTED - SACHIN.R.DSILVA ===========================       
-         //=============== COMMENTED - SACHIN.R.DSILVA ===========================       
-         //=============== COMMENTED - SACHIN.R.DSILVA ===========================       
-
-        // 12fps: don't animate too fast to preserve CPU
-        // const nsecs_t sleepTime = 83333 - ns2us(systemTime() - now); - SACHIN.R.DSILVA 2025-02-04
-        // const nsecs_t sleepTime = 50000 - ns2us(systemTime() - now); // ~50ms - SACHIN.R.DSILVA 2025-02-04
-        // if (sleepTime > 0)
-        //     usleep(sleepTime);
-         //=============== COMMENTED - SACHIN.R.DSILVA ===========================       
-         //=============== COMMENTED - SACHIN.R.DSILVA ===========================       
-         //=============== COMMENTED - SACHIN.R.DSILVA ===========================       
+        //=============== - SACHIN.R.DSILVA 2025-02-04 - ===========================            
 
         checkExit();
     } while (!exitPending());
 
     glDeleteTextures(1, &mAndroid[0].name);
-    // ryk test ==>
-    //glDeleteTextures(1, &mAndroid[1].name);
-    // ryk test <==
+
 
     // --------------- SACHIN.R.DSILVA 2025-01-30 -------------------------------
 
