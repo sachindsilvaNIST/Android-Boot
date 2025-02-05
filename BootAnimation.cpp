@@ -714,9 +714,9 @@ bool BootAnimation::nidec() {
 
 
     //-------- Modify the time frames (StartTime Frame & EndTime Frame) - SACHIN.R.DSILVA 2025-02-04------
-    static const nsecs_t FRAME_DURATION_NS = 70000LL * 1000; // 50ms for 20fps
-    int currentFrame = 0; // The current spinner frame
-    int spinnerX, spinnerY, spinnerWidth, spinnerHeight;
+    static const nsecs_t FRAME_DURATION_NS = 70000LL * 1000; // 50ms for 20fps - Modified SACHIN.R.DSILVA 2025-01-04
+    int currentFrame = 0; // The current spinner frame - Modified SACHIN.R.DSILVA 2025-01-04
+    int spinnerX, spinnerY, spinnerWidth, spinnerHeight; // Modified - SACHIN.R.DSILVA 2025-01-04
 
 
     //-------- Modify the time frames (StartTime Frame & EndTime Frame) - SACHIN.R.DSILVA 2025-02-04------
@@ -817,7 +817,6 @@ bool BootAnimation::nidec() {
          //=============== COMMENTED - SACHIN.R.DSILVA ===========================       
          //=============== COMMENTED - SACHIN.R.DSILVA ===========================       
          //=============== COMMENTED - SACHIN.R.DSILVA ===========================       
-
 
         checkExit();
     } while (!exitPending());
