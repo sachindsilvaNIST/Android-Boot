@@ -1,0 +1,49 @@
+Steps to Build Android Image for Android Applications.
+
+$ cd android_build/
+
+$ source build/envsetup.sh
+
+$ lunch gpn600_001-eng
+
+## If you've octa - 4 cores ##
+$ ./imx-make.sh -j4 2>&1 
+
+## If you've octa - 6 cores ##
+$ ./imx-make.sh -j6 2>&1 
+
+
+## (Clean Build) If you've octa - 4 cores ## 
+$ ./imx-make.sh -j4 -c 2>&1
+
+
+## (Clean Build) If you've octa - 6 cores ## 
+$ ./imx-make.sh -j6 -c 2>&1
+
+
+## If you've octa - 4 cores ##
+$ make otapackage -j4
+
+
+## If you've octa - 6 cores ##
+$ make otapackage -j6
+
+
+## Copy to pendrive (Rename your pendrive media as "DATA") ##
+$ ./usbwrite.sh 
+
+
+## Here is what script `usbwrite.sh` contains ##
+============================================================================================
+============================================================================================
+
+#!/bin/bash
+
+mv out/target/product/gpn600_001/gpn600_001-AAL-AA-07009-01.zip /media/sankyo/DATA/Update/
+mv out/target/product/gpn600_001/gpn600_001-AAL-AA-07009-01.json /media/sankyo/DATA/Update/
+
+============================================================================================
+============================================================================================
+
+
+
