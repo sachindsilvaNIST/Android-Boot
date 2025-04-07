@@ -21,7 +21,13 @@ The spinner plays smoothly under the **"NIDEC - All For Dreams"** logo and is op
 
 ## File Structure
 
-/bootanimation ├── images/ │ ├── nidec-logo_landscape2.png │ └── spinner_1.png to spinner_60.png ├── BootAnimation.cpp ├── BootAnimation.h └── Android.mk or Android.bp
+/bootanimation 
+├── images/ 
+│ ├── nidec-logo_landscape2.png 
+│ └── spinner_1.png to spinner_60.png 
+├── BootAnimation.cpp 
+├── BootAnimation.h 
+└── Android.mk or Android.bp
 
 
 ---
@@ -47,3 +53,27 @@ if (sleepNs > 0) {
     usleep(ns2us(sleepNs));
 }
 ```
+
+
+## How to Integrate
+
+1. **Replace** the default `bootanimation.zip` with a custom one containing the `nidec-logo` and `spinner` images.
+2. **Update** the Android system service that launches the boot animation to call the `BootAnimation::nidec()` function.
+3. **Recompile** and flash your modified system image.
+
+---
+
+## Notes
+
+- Ensure all 60 spinner PNG files exist in the correct path inside the boot animation ZIP.
+- Tested for landscape resolution, adjust `spinnerX` and `spinnerY` for different screen sizes.
+- Compatible with OpenGL ES 1.0 (via legacy APIs).
+
+---
+
+## Author
+
+**Sachin R. D'Silva**  
+_NIDEC Custom Firmware Integration Engineer_  
+📅 January–February 2025
+
