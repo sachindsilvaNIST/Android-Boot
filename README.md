@@ -29,7 +29,7 @@ The spinner plays smoothly under the **"NIDEC - All For Dreams"** logo and is op
 ├── BootAnimation.cpp
 ├── BootAnimation.h
 └── Android.mk or Android.bp
-
+```
 
 ---
 
