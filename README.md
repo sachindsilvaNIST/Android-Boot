@@ -21,12 +21,13 @@ The spinner plays smoothly under the **"NIDEC - All For Dreams"** logo and is op
 
 ## File Structure
 
-/bootanimation 
-├── images/ 
-│ ├── nidec-logo_landscape2.png 
-│ └── spinner_1.png to spinner_60.png 
-├── BootAnimation.cpp 
-├── BootAnimation.h 
+```plaintext
+/bootanimation
+├── images/
+│   ├── nidec-logo_landscape2.png
+│   └── spinner_1.png to spinner_60.png
+├── BootAnimation.cpp
+├── BootAnimation.h
 └── Android.mk or Android.bp
 
 
