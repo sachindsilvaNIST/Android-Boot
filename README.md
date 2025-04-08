@@ -74,7 +74,7 @@ if (sleepNs > 0) {
 
 ## Author
 
-**Sachin R. D'Silva**  
-_NIDEC Custom Firmware Integration Engineer_  
+**Sachin.R.Dsilva**  
+SWE-G1 - NIST
 📅 January–February 2025
 
